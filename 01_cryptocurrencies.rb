@@ -16,18 +16,14 @@ def trouver_crypto_max_value(noms, prix)
       puts "Les tableaux n'ont pas la même longueur."
       return
     end
+     hash_crypto_valeurs = Hash[noms.zip(prix)] # Créer un hash associant chaque cryptomonnaie à son prix
   
-    # Créer un hash associant chaque cryptomonnaie à son prix
-    hash_crypto_valeurs = Hash[noms.zip(prix)]
+     crypto_max_value = hash_crypto_valeurs.max_by { |crypto, value| value.to_f } # Trouver la ou les cryptomonnaies avec la plus grande valeur
   
-    # Trouver la ou les cryptomonnaies avec la plus grande valeur
-    crypto_max_value = hash_crypto_valeurs.max_by { |crypto, value| value.to_f }
-  
-    # Afficher le résultat
     puts "La ou les cryptomonnaies avec la plus grande valeur : #{crypto_max_value[0]} avec un montant de #{crypto_max_value[1]}"
   end
-    # Appel de la méthode avec les tableaux en argument
-  trouver_crypto_max_value(namecrypto, price)
+   
+  trouver_crypto_max_value(namecrypto, price)  # Appel de la méthode 
 
   def trouver_crypto_min_value(noms, prix)
     # Vérifier que les deux tableaux ont la même longueur
@@ -35,19 +31,12 @@ def trouver_crypto_max_value(noms, prix)
       puts "Les tableaux n'ont pas la même longueur."
       return
     end
-  
-    # Créer un hash associant chaque cryptomonnaie à son prix
     hash_crypto_valeurs = Hash[noms.zip(prix)]
-  
-    # Trouver la ou les cryptomonnaies avec la plus petite valeur
-    crypto_min_value = hash_crypto_valeurs.min_by { |crypto, value| value.to_f }
-  
-    # Afficher le résultat
+    crypto_min_value = hash_crypto_valeurs.min_by { |crypto, value| value.to_f }# Trouver la ou les cryptomonnaies avec la plus petite valeur
+
     puts "La ou les cryptomonnaies avec la plus petite valeur : #{crypto_min_value[0]} avec un montant de #{crypto_min_value[1]}"
   end
-  
-  
-  # Appel de la méthode avec les tableaux en argument
+   # Appel de la méthode 
   trouver_crypto_min_value(namecrypto, price)
 
   def trouver_crypto_cours_inferieur_a(noms, prix, seuil)
@@ -56,12 +45,10 @@ def trouver_crypto_max_value(noms, prix)
       puts "Les tableaux n'ont pas la même longueur."
       return
     end
-  
-    # Créer un hash associant chaque cryptomonnaie à son prix
     hash_crypto_valeurs = Hash[noms.zip(prix)]
   
-    # Sélectionner les cryptomonnaies dont le cours est inférieur à 6000
-    cryptos_inf_6000 = hash_crypto_valeurs.select { |crypto, value| value.to_f < seuil }
+   
+    cryptos_inf_6000 = hash_crypto_valeurs.select { |crypto, value| value.to_f < seuil } # Sélectionner les cryptomonnaies dont le cours est inférieur à 6000
   
     # Afficher le résultat
     if cryptos_inf_6000.empty?
@@ -73,7 +60,7 @@ def trouver_crypto_max_value(noms, prix)
   end
 
   
-  # Appel de la méthode avec les tableaux en argument et le seuil de 6000
+  # Appel de la méthode 
   trouver_crypto_cours_inferieur_a(namecrypto, price, 6000)
 
   def trouver_devise_plus_chere_cours_inferieur_a(noms, prix, seuil)
@@ -83,14 +70,12 @@ def trouver_crypto_max_value(noms, prix)
       return
     end
   
-    # Créer un hash associant chaque cryptomonnaie à son prix
     hash_crypto_valeurs = Hash[noms.zip(prix)]
   
-    # Sélectionner les cryptomonnaies dont le cours est inférieur à 6000
-    cryptos_inf_6000 = hash_crypto_valeurs.select { |crypto, value| value.to_f < seuil }
+    cryptos_inf_6000 = hash_crypto_valeurs.select { |crypto, value| value.to_f < seuil }# Sélectionner les cryptomonnaies dont le cours est inférieur à 6000
   
-    # Trouver la devise la plus chère parmi celles sélectionnées
-    devise_plus_chere = cryptos_inf_6000.max_by { |crypto, value| value.to_f }
+   
+    devise_plus_chere = cryptos_inf_6000.max_by { |crypto, value| value.to_f } # Trouver la devise la plus chère parmi celles sélectionnées
   
     # Afficher le résultat
     if devise_plus_chere
@@ -100,6 +85,6 @@ def trouver_crypto_max_value(noms, prix)
     end
   end
   
-  # Appel de la méthode avec les tableaux en argument et le seuil de 6000
+  # Appel de la méthode
   trouver_devise_plus_chere_cours_inferieur_a(namecrypto, price, 6000)
   
